@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class ScytheController : MonoBehaviour
 {
@@ -69,16 +70,13 @@ public class ScytheController : MonoBehaviour
             Holding = true;
             Flying = false;
 
+            Vector2 scale = transform.localScale;
+            scale.x = Mathf.Sign(player.GetComponent<PlayerController>().Facing);
+            transform.localScale = scale;
+
             Body.bodyType = RigidbodyType2D.Kinematic;
             Body.velocity = Vector2.zero;
             transform.SetParent(player.transform);
-
-            if (player.GetComponent<PlayerController>().Facing != Mathf.Sign(transform.localScale.x))
-            {
-                Vector2 scale = transform.localScale;
-                scale.x = -scale.x;
-                transform.localScale = scale;
-            }
         }
         else if (state == "FLY")
         {
@@ -99,12 +97,6 @@ public class ScytheController : MonoBehaviour
         {
             ChangeState("FLY");
             Body.AddForce(scytData.scytheSpeed * direction, ForceMode2D.Force);
-        }
-        else if (Flying)
-        {
-            player.transform.position = transform.position;
-            ChangeState("HOLD");
-            player.GetComponent<PlayerController>().SlowTime(scytData.recoveryTime);
         }
     }
 }
