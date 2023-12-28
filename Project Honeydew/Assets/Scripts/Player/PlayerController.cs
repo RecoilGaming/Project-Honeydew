@@ -32,12 +32,14 @@ public class PlayerController : MonoBehaviour
 
 	// direction variables
 	private Vector2 moveDirection;
+	private Vector2 throwDirection;
 
 	// jump variables
 	private bool weakerJump;
 	private bool jumpFalling;
 	private float wallJumpStart;
 	private int wallJumpDir;
+	private float gravityModifier;
 
 	// dash variables
 	private int dashCount;
@@ -52,6 +54,10 @@ public class PlayerController : MonoBehaviour
 	// camera variables
 	[Header("Camera")]
 	[SerializeField] private Camera mainCamera;
+
+	// scythe variables
+	[Header("Scythe")]
+	[SerializeField] private ScytheController scytheController;
 
     // collision variables
 	[Header("Collision")]
@@ -82,6 +88,7 @@ public class PlayerController : MonoBehaviour
     {
         Body.gravityScale = moveData.gravityScale;
 		Facing = 1;
+		gravityModifier = 1;
     }
 
 	// updates every frame
@@ -125,6 +132,10 @@ public class PlayerController : MonoBehaviour
 	{
 		// movement input
 		moveDirection = moveAction.ReadValue<Vector2>();
+		if (moveDirection == Vector2.left || moveDirection == Vector2.right || moveDirection == Vector2.up || moveDirection == Vector2.down)
+		{
+			throwDirection = moveDirection;
+		}
 
 		// jump input
 		jumpAction.started += _ => 
@@ -146,6 +157,20 @@ public class PlayerController : MonoBehaviour
 		{
 			PrevDash = moveData.dashBuffer;
 			Debug.Log("DASH");
+		};
+
+		// throw input
+		throwAction.started += _ => 
+		{
+			if (throwDirection.magnitude != 0)
+			{
+				scytheController.ThrowScythe(throwDirection);
+			}
+			else
+			{
+				scytheController.ThrowScythe(Vector2.left * -Facing);
+			}
+			Debug.Log("THROW");
 		};
 	}
 
@@ -418,6 +443,7 @@ public class PlayerController : MonoBehaviour
 			// default gravity
 			Body.gravityScale = moveData.gravityScale;
 		}
+		Body.gravityScale *= gravityModifier;
 	}
 
 	// walking movement
@@ -499,5 +525,18 @@ public class PlayerController : MonoBehaviour
 		Gizmos.DrawWireCube(groundCheck.position, groundCheckSize);
 		Gizmos.DrawWireCube(frontCheck.position, wallCheckSize);
 		Gizmos.DrawWireCube(backCheck.position, wallCheckSize);
+	}
+
+	// gravity slowing
+	public void SlowTime(float time)
+	{
+		StartCoroutine(nameof(SlowGravity), time);
+	}
+
+	private IEnumerator SlowGravity(float time)
+	{
+		gravityModifier = 0.1f;
+		yield return new WaitForSeconds(time);
+		gravityModifier = 1f;
 	}
 }
