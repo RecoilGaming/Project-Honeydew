@@ -1,20 +1,14 @@
-using System;
 using UnityEngine;
 
 public class ScytheController : MonoBehaviour
 {
     // action variables
-    public bool Holding { get; private set; }
     public bool Flying { get; private set; }
-    public bool Returning { get; private set; }
-    public bool Grounded { get; private set; }
+    public bool Holding { get; private set; }
 
     // component variables
     private Rigidbody2D Body { get; set; }
     private BoxCollider2D Collider { get; set; }
-
-    // scythe variables
-    private Vector2 throwDirection;
 
     // general variables
 	[Header("General")]
@@ -33,7 +27,8 @@ public class ScytheController : MonoBehaviour
     private void Start()
     {
         // default configuration
-        ChangeState("RETURN");
+        transform.position = player.transform.position;
+        ChangeState("HOLD");
 
         // ignore player
         Physics2D.IgnoreCollision(Collider, player.GetComponent<BoxCollider2D>());
@@ -47,38 +42,20 @@ public class ScytheController : MonoBehaviour
         {
             if (Vector3.Distance(player.transform.position,transform.position) >= scytData.scytheRange)
             {
-                ChangeState("RETURN");
-            }
-        }
-
-        // scythe hold
-        if (Returning)
-        {
-            if (Vector3.Distance(player.transform.position,transform.position) < 1)
-            {
                 transform.position = player.transform.position;
                 ChangeState("HOLD");
             }
         }
     }
 
-    // updates at 60 fps
-	private void FixedUpdate()
-	{
-        // if (Returning)
-        // {
-        //     throwDirection = (player.transform.position - transform.position).normalized;
-        //     Body.AddForce(scytData.returnSpeed * throwDirection - Body.velocity, ForceMode2D.Force);
-        // }
-    }
-
     // collision detection
     private void OnCollisionEnter2D()
     {
         // scythe ground
-        if (Flying || Returning)
+        if (Flying)
         {
-            ChangeState("GROUND");
+            player.transform.position = transform.position;
+            ChangeState("HOLD");
         }
     }
 
@@ -90,8 +67,6 @@ public class ScytheController : MonoBehaviour
         {
             Holding = true;
             Flying = false;
-            Returning = false;
-            Grounded = false;
 
             Body.bodyType = RigidbodyType2D.Kinematic;
             Body.velocity = Vector2.zero;
@@ -108,29 +83,10 @@ public class ScytheController : MonoBehaviour
         {
             Holding = false;
             Flying = true;
-            Returning = false;
-            Grounded = false;
 
             Body.bodyType = RigidbodyType2D.Dynamic;
             // Collider.enabled = true;
             transform.SetParent(null);
-        }
-        else if (state == "RETURN")
-        {
-            Holding = false;
-            Flying = false;
-            Returning = true;
-            Grounded = false;
-        }
-        else if (state == "GROUND")
-        {
-            Holding = false;
-            Flying = false;
-            Returning = false;
-            Grounded = true;
-
-            Body.velocity = Vector2.zero;
-            Body.bodyType = RigidbodyType2D.Static;
         }
     }
 
@@ -140,17 +96,8 @@ public class ScytheController : MonoBehaviour
         // scythe fly
         if (Holding)
         {
-            throwDirection = direction;
             ChangeState("FLY");
-            Body.AddForce(scytData.scytheSpeed * throwDirection, ForceMode2D.Force);
-        }
-
-        // scythe teleport
-        else if (Grounded)
-        {
-            player.transform.position = transform.position;
-            ChangeState("HOLD");
-            player.GetComponent<PlayerController>().SlowTime(scytData.recoveryTime);
+            Body.AddForce(scytData.scytheSpeed * direction, ForceMode2D.Force);
         }
     }
 }
