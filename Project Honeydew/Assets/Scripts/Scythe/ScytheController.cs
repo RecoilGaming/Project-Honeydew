@@ -56,6 +56,7 @@ public class ScytheController : MonoBehaviour
         {
             player.transform.position = transform.position;
             ChangeState("HOLD");
+            player.GetComponent<PlayerController>().SlowTime(scytData.recoveryTime);
         }
     }
 
@@ -98,6 +99,12 @@ public class ScytheController : MonoBehaviour
         {
             ChangeState("FLY");
             Body.AddForce(scytData.scytheSpeed * direction, ForceMode2D.Force);
+        }
+        else if (Flying)
+        {
+            player.transform.position = transform.position;
+            ChangeState("HOLD");
+            player.GetComponent<PlayerController>().SlowTime(scytData.recoveryTime);
         }
     }
 }
