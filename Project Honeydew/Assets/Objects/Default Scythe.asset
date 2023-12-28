@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f095799191ffb4314a17dbe06707742c, type: 3}
   m_Name: Default Scythe
   m_EditorClassIdentifier: 
-  gravityClamp: 500
-  gravityAccel: 100
   scytheRange: 25
-  scytheSpeed: 50
-  scytheAccel: 25
+  scytheSpeed: 2000
   returnSpeed: 80
   recoveryTime: 0.1

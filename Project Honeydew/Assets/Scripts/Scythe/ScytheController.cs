@@ -15,7 +15,6 @@ public class ScytheController : MonoBehaviour
 
     // scythe variables
     private Vector2 throwDirection;
-    private float gravityForce;
 
     // general variables
 	[Header("General")]
@@ -35,7 +34,6 @@ public class ScytheController : MonoBehaviour
     {
         // default configuration
         ChangeState("RETURN");
-        gravityForce = 0;
 
         // ignore player
         Physics2D.IgnoreCollision(Collider, player.GetComponent<BoxCollider2D>());
@@ -67,18 +65,11 @@ public class ScytheController : MonoBehaviour
     // updates at 60 fps
 	private void FixedUpdate()
 	{
-        // scythe move
-        if (Flying)
-        {
-            Debug.Log(gravityForce);
-            gravityForce = Mathf.Lerp(gravityForce, scytData.gravityClamp, scytData.gravityAccel);
-            Body.AddForce((scytData.scytheSpeed * throwDirection - Body.velocity) * scytData.scytheAccel + Vector2.down * gravityForce, ForceMode2D.Force);
-        }
-        else if (Returning)
-        {
-            throwDirection = (player.transform.position - transform.position).normalized;
-            Body.AddForce((scytData.returnSpeed * throwDirection - Body.velocity) * scytData.scytheAccel, ForceMode2D.Force);
-        }
+        // if (Returning)
+        // {
+        //     throwDirection = (player.transform.position - transform.position).normalized;
+        //     Body.AddForce(scytData.returnSpeed * throwDirection - Body.velocity, ForceMode2D.Force);
+        // }
     }
 
     // collision detection
@@ -101,8 +92,6 @@ public class ScytheController : MonoBehaviour
             Flying = false;
             Returning = false;
             Grounded = false;
-
-            gravityForce = 0;
 
             Body.bodyType = RigidbodyType2D.Kinematic;
             Body.velocity = Vector2.zero;
@@ -132,8 +121,6 @@ public class ScytheController : MonoBehaviour
             Flying = false;
             Returning = true;
             Grounded = false;
-
-            // Collider.enabled = false;
         }
         else if (state == "GROUND")
         {
@@ -142,11 +129,8 @@ public class ScytheController : MonoBehaviour
             Returning = false;
             Grounded = true;
 
-            gravityForce = 0;
-
             Body.velocity = Vector2.zero;
             Body.bodyType = RigidbodyType2D.Static;
-            // Collider.enabled = false;
         }
     }
 
@@ -158,6 +142,7 @@ public class ScytheController : MonoBehaviour
         {
             throwDirection = direction;
             ChangeState("FLY");
+            Body.AddForce(scytData.scytheSpeed * throwDirection, ForceMode2D.Force);
         }
 
         // scythe teleport

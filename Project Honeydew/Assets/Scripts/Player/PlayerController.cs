@@ -162,14 +162,7 @@ public class PlayerController : MonoBehaviour
 		// throw input
 		throwAction.started += _ => 
 		{
-			if (throwDirection.magnitude != 0)
-			{
-				scytheController.ThrowScythe(throwDirection);
-			}
-			else
-			{
-				scytheController.ThrowScythe(Vector2.left * -Facing);
-			}
+			scytheController.ThrowScythe((Vector2.left * -Facing + Vector2.up * 2).normalized);
 			Debug.Log("THROW");
 		};
 	}
