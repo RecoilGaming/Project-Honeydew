@@ -141,7 +141,6 @@ public class PlayerController : MonoBehaviour
 		jumpAction.started += _ => 
 		{
 			PrevJump = moveData.jumpBuffer;
-			Debug.Log("JUMP");
 		};
 
 		jumpAction.canceled += _ =>
@@ -256,6 +255,7 @@ public class PlayerController : MonoBehaviour
 
 		if (LastOnGround > 0 && !Jumping && PrevJump > 0)
 		{
+			
 			// update variables
 			Jumping = true;
 			WallJumping = false;

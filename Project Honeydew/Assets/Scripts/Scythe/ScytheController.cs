@@ -38,6 +38,7 @@ public class ScytheController : MonoBehaviour
     // updates every frame
     private void Update()
     {
+        
         // scythe return
         if (Flying)
         {
@@ -48,7 +49,13 @@ public class ScytheController : MonoBehaviour
             }
         }
     }
-
+    
+    public void ScytheDoubleJump() {
+        if (Flying) {
+            Body.velocity = new Vector2(Body.velocity.x, 0);
+            Body.AddForce(scytData.scytheSpeed * Vector2.up, ForceMode2D.Force);
+        }
+    }
     // collision detection
     private void OnCollisionEnter2D()
     {
