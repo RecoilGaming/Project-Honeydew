@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 887625777943f4686941ff7e90339ed7, type: 3}
   m_Name: Follow
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  maxHealth: 0
-  moveSpeed: 0
-  attackDamage: 0
+  name: Follow
+  description: Follows the player.
+  maxHealth: 50
+  moveSpeed: 10
+  attackDamage: 20
   attackCooldown: 0
-  chaseRange: 0
-  attackRange: 0
+  chaseRange: 10
+  attackRange: 1
