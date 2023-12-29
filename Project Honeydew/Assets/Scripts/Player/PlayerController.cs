@@ -70,6 +70,10 @@ public class PlayerController : MonoBehaviour
         ability1.Handle(abil1Action.IsPressed());
         ability2.Handle(abil2Action.IsPressed());
         ability3.Handle(abil3Action.IsPressed());
+        // if (fireAction.WasPressedThisFrame()) {
+        //     Damage(25);
+        //     Debug.Log(Health);
+        // }
 
         healthbar.SetHealthPercent(Health / maxHealth);
     }
@@ -81,12 +85,14 @@ public class PlayerController : MonoBehaviour
     }
 
     // health modification
-    private void Damage(float amt) {
+    public void Damage(float amt)
+    {
         Health -= amt;
         healthbar.SetHealthPercent(Health / maxHealth);
     }
 
-    private void Heal(float amt) {
+    public void Heal(float amt)
+    {
         Health += amt;
         healthbar.SetHealthPercent(Health / maxHealth);
     }
