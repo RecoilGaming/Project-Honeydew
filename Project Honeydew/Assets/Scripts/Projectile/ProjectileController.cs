@@ -14,7 +14,6 @@ public class ProjectileController : MonoBehaviour
 		Body = GetComponent<Rigidbody2D>();
     }
 
-
     // runs at 60 fps
 	private void FixedUpdate()
 	{
