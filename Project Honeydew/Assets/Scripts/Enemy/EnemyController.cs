@@ -20,4 +20,16 @@ public class EnemyController : MonoBehaviour
     {
         enemyHandler.Handle(player, gameObject);
     }
+
+    // health modification
+    public void Damage(float amt)
+    {
+        Health -= amt;
+        Debug.Log(Health);
+    }
+
+    public void Heal(float amt)
+    {
+        Health += amt;
+    }
 }

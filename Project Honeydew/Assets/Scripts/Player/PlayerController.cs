@@ -1,3 +1,4 @@
+using System;
 using Unity.Properties;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,7 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject playerCore;
     [SerializeField] private Healthbar healthbar;
     
+    
     [Header("Stats")]
+    [SerializeField] private float invincibility;
     [SerializeField] private float maxHealth;
     [SerializeField] private float healSpeed;
 
@@ -34,8 +37,9 @@ public class PlayerController : MonoBehaviour
     private InputAction abil2Action;
     private InputAction abil3Action;
 
-    // direction variables
+    // other variables
     private Vector2 lookDirection;
+    private float invincibilityTimer = 0;
 
     // runs before scene loads
     private void Awake()
@@ -76,6 +80,9 @@ public class PlayerController : MonoBehaviour
         // }
 
         healthbar.SetHealthPercent(Health / maxHealth);
+
+        // decrease timers
+        invincibilityTimer -= Time.deltaTime;
     }
 
     // runs at 60 fps
@@ -87,13 +94,16 @@ public class PlayerController : MonoBehaviour
     // health modification
     public void Damage(float amt)
     {
-        Health -= amt;
+        if (invincibilityTimer > 0) return;
+        
+        Health = Mathf.Max(Health-amt, 0);
         healthbar.SetHealthPercent(Health / maxHealth);
+        invincibilityTimer = invincibility;
     }
 
     public void Heal(float amt)
     {
-        Health += amt;
+        Health = Mathf.Min(Health+amt, maxHealth);
         healthbar.SetHealthPercent(Health / maxHealth);
     }
 }
