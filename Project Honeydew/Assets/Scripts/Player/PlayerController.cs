@@ -1,3 +1,4 @@
+using Unity.Properties;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("General")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject playerCore;
+    [SerializeField] private Healthbar healthbar;
     
     [Header("Stats")]
     [SerializeField] private float maxHealth;
@@ -51,13 +53,13 @@ public class PlayerController : MonoBehaviour
     }
 
     // runs when script loads
-    void Start()
+    private void Start()
     {
-        // SETUP HERE
+        Health = maxHealth;
     }
 
     // runs every frame
-    void Update()
+    private void Update()
     {
         // rotate pointer
         lookDirection = mainCamera.ScreenToWorldPoint(lookAction.ReadValue<Vector2>()).normalized;
@@ -68,11 +70,24 @@ public class PlayerController : MonoBehaviour
         ability1.Handle(abil1Action.IsPressed());
         ability2.Handle(abil2Action.IsPressed());
         ability3.Handle(abil3Action.IsPressed());
+
+        healthbar.SetHealthPercent(Health / maxHealth);
     }
 
     // runs at 60 fps
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         
+    }
+
+    // health modification
+    private void Damage(float amt) {
+        Health -= amt;
+        healthbar.SetHealthPercent(Health / maxHealth);
+    }
+
+    private void Heal(float amt) {
+        Health += amt;
+        healthbar.SetHealthPercent(Health / maxHealth);
     }
 }

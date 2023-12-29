@@ -16,5 +16,5 @@ MonoBehaviour:
   rarity: 0
   description: Fire a bullet in the direction you are facing.
   activation: 0
-  cooldown: 1
+  cooldown: 0.5
   projectile: {fileID: 2044118330515718838, guid: 51dbb206227704ea19c97b2f9af15203, type: 3}
