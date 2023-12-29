@@ -11,9 +11,9 @@ public class AbilityHandler : MonoBehaviour
 {
     // private variables
     [SerializeField] private Ability ability;
-    private AbilityState state;
     private float activeTimer;
     private float cooldownTimer;
+    private AbilityState state;
 
     // disable ability
     public void Disable(float dur)

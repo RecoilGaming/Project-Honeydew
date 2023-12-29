@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Follow
   description: Follows the player.
-  maxHealth: 50
-  moveSpeed: 10
-  attackDamage: 20
-  attackCooldown: 2
+  maxHealth: 20
+  moveSpeed: 7
+  attackDamage: 5
+  attackCooldown: 0
   chaseRange: 10
   attackRange: 1

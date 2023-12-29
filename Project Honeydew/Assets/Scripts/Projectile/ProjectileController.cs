@@ -30,9 +30,10 @@ public class ProjectileController : MonoBehaviour
     }
 
     // collision destroy
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.layer == projectile.enemy) {
+        if (projectile.enemy == (projectile.enemy | (1 << collider.gameObject.layer))) {
+            collider.gameObject.GetComponent<EnemyController>().Damage(projectile.damage);
             Destroy(gameObject);
         }
     }
