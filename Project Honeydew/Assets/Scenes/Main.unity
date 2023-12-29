@@ -1100,12 +1100,10 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1813228810 stripped
---- !u!1 &1813228810 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3180361126542486173, guid: 5b280a95718cf4e0ba545e6c61a7b0d7, type: 3}
   m_PrefabInstance: {fileID: 8353054504848287666}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1813228814 stripped
 --- !u!114 &1813228814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4173552041761996049, guid: 5b280a95718cf4e0ba545e6c61a7b0d7, type: 3}
