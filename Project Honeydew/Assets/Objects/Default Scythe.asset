@@ -15,4 +15,4 @@ MonoBehaviour:
   scytheRange: 25
   scytheSpeed: 2000
   returnSpeed: 80
-  recoveryTime: 0.1
+  recoveryTime: 0.2
