@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 887625777943f4686941ff7e90339ed7, type: 3}
-  m_Name: Follow
+  m_Script: {fileID: 11500000, guid: 3c930dbf99be85142a9aa37177f6ade9, type: 3}
+  m_Name: Dash
   m_EditorClassIdentifier: 
-  name: Follow
-  description: Follows the player.
-  maxHealth: 50
+  name: 
+  description: 
+  maxHealth: 70
   moveSpeed: 10
   attackDamage: 20
   attackCooldown: 2
-  chaseRange: 10
+  chaseRange: 1000
   attackRange: 1
