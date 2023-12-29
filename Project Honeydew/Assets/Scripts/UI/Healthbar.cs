@@ -1,9 +1,7 @@
-using System.Collections;
 using UnityEngine;
 
 public class Healthbar : MonoBehaviour
 {
-    // private variables
     [SerializeField] private Transform healthOverlay;
 
     public void SetHealthPercent(float health)

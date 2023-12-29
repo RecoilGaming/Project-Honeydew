@@ -28,8 +28,9 @@ public class ProjectileController : MonoBehaviour
     // collision destroy
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        EnemyController enemy = collider.gameObject.GetComponent<EnemyController>();
         if (projectile.enemy == (projectile.enemy | (1 << collider.gameObject.layer))) {
-            collider.gameObject.GetComponent<EnemyController>().Damage(projectile.damage);
+            enemy.Damage(projectile.damage);
             Destroy(gameObject);
         }
     }

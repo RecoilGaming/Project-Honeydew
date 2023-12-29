@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: d4e6dbbdbbc134ca9ac8efe7a086ba4c, type: 2}
+  playerObj: {fileID: 3180361126542486173, guid: 5b280a95718cf4e0ba545e6c61a7b0d7, type: 3}
 --- !u!1 &8157294452639513544
 GameObject:
   m_ObjectHideFlags: 0

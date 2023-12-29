@@ -42,6 +42,7 @@ public class EnemyHandler : MonoBehaviour
         }
         
         if (obj.GetComponent<EnemyController>().Health <= 0) {
+            player.GetComponent<PlayerController>().GainXP(enemy.experienceYield);
             enemy.Die(player, obj);
         }
     }

@@ -11,6 +11,7 @@ public class Enemy : ScriptableObject
     public float moveSpeed;
     public float attackDamage;
     public float attackCooldown;
+    public float experienceYield;
 
     [Header("Timers")]
     public float chaseRange;
