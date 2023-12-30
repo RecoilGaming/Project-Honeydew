@@ -15,8 +15,9 @@ MonoBehaviour:
   name: Follow
   description: Follows the player.
   maxHealth: 20
-  moveSpeed: 7
+  moveSpeed: 2
   attackDamage: 5
   attackCooldown: 0
+  experienceYield: 35
   chaseRange: 10
   attackRange: 1

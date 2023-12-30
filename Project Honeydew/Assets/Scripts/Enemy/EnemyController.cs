@@ -25,7 +25,6 @@ public class EnemyController : MonoBehaviour
     public void Damage(float amt)
     {
         Health -= amt;
-        Debug.Log(Health);
     }
 
     public void Heal(float amt)
