@@ -17,4 +17,5 @@ MonoBehaviour:
   enemy:
     serializedVersion: 2
     m_Bits: 128
-  damage: 12
+  damage: 10
+  damageAddon: 19

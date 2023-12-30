@@ -1797,7 +1797,7 @@ MonoBehaviour:
   - upgrade: {fileID: 11400000, guid: 12d2fcd7ba01e47659564fbfce45db95, type: 2}
     weight: 1
   - upgrade: {fileID: 11400000, guid: 9bf085c9816044e1f826219c48f792b4, type: 2}
-    weight: 5
+    weight: 6
   - upgrade: {fileID: 11400000, guid: 6262fa3ad609243468f9d6a82d4eb292, type: 2}
     weight: 4
   - upgrade: {fileID: 11400000, guid: f41ec2a0b847946d484c8272c2faf348, type: 2}
