@@ -7,7 +7,6 @@ public class EnemyController : MonoBehaviour
 
     // private variables
     [SerializeField] private EnemyHandler enemyHandler;
-    [SerializeField] private GameObject player;
     
     // runs when script loads
     private void Start()
@@ -18,7 +17,7 @@ public class EnemyController : MonoBehaviour
     // runs every frame
     void Update()
     {
-        enemyHandler.Handle(player, gameObject);
+        enemyHandler.Handle(PlayerController.Player, gameObject);
     }
 
     // health modification

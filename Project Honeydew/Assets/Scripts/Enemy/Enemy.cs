@@ -10,7 +10,6 @@ public class Enemy : ScriptableObject
     public float maxHealth;
     public float moveSpeed;
     public float attackDamage;
-    public float attackCooldown;
     public float experienceYield;
 
     [Header("Timers")]

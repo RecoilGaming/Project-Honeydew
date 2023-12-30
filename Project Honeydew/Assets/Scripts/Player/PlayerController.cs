@@ -1,11 +1,10 @@
-using System;
-using Unity.Properties;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     // public variables
+    public static GameObject Player { get; private set; }
     public float Health { get; private set; }
     public int Level { get; private set; }
     public float Experience { get; private set; }
@@ -48,6 +47,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 lookDirection;
     private float invincibilityTimer = 0;
     private float xpRequirement;
+
+    private void OnEnable() { Player = gameObject; }
+    private void OnDisable() { Player = null; }
 
     // runs before scene loads
     private void Awake()
@@ -95,12 +97,6 @@ public class PlayerController : MonoBehaviour
 
         // decrease timers
         invincibilityTimer -= Time.deltaTime;
-    }
-
-    // runs at 60 fps
-    private void FixedUpdate()
-    {
-        
     }
 
     // health modification
