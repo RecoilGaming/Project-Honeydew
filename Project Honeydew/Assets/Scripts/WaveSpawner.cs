@@ -55,8 +55,8 @@ public class WaveSpawner : MonoBehaviour
 
     private void GenerateWave()
     {
-        waveValue = (int) (baseWaveValue * Mathf.Pow(waveValueGrowth, waveNumber-1));
-        waveEnemies = Mathf.Min(enemies.Count, 1 + (int) Mathf.Log(waveNumber, 2));
+        waveValue = (int) (baseWaveValue * Mathf.Pow(waveValueGrowth, 2*(waveNumber-1)));
+        waveEnemies = Mathf.Min(enemies.Count, 1 + (int) Mathf.Log(waveNumber, 3));
 
         newEnemies.Clear();
         while (waveValue > 0)

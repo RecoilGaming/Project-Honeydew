@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,9 +20,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LevelDisplay levelDisplay;
     
     [Header("Stats")]
-    [SerializeField] private float invincibility;
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float healSpeed;
+    public float maxHealth;
+    public float healSpeed;
+    public float invincibility;
+    public float attackDamage;
+    public float experienceMultiplier;
+    public float cameraSize;
 
     [Header("Leveling")]
     [SerializeField] private float baseXpRequirement;
@@ -48,6 +52,7 @@ public class PlayerController : MonoBehaviour
     // other variables
     private Vector2 lookDirection;
     private float invincibilityTimer = 0;
+    private float healingTimer = 0;
     private float xpRequirement;
 
     private void OnEnable() { Player = gameObject; }
@@ -93,12 +98,17 @@ public class PlayerController : MonoBehaviour
         ability3.Handle(abil3Action.IsPressed());
 
         // pausing
-        pauseAction.started += _ => {
-            gameManager.Pause();
-        };
+        pauseAction.started += _ => { gameManager.Pause(); };
+
+        // healing
+        if (healSpeed > 0) Heal(healSpeed);
+
+        // change camera size
+        if (mainCamera.orthographicSize != cameraSize) mainCamera.orthographicSize = cameraSize;
 
         // decrease timers
         invincibilityTimer -= Time.deltaTime;
+        healingTimer -= Time.deltaTime;
     }
 
     // health modification
@@ -113,14 +123,17 @@ public class PlayerController : MonoBehaviour
 
     public void Heal(float amt)
     {
+        if (healingTimer > 0) return;
+
         Health = Mathf.Min(Health+amt, maxHealth);
         healthbar.SetHealthPercent(Health / maxHealth);
+        healingTimer = 1;
     }
 
     // level modification
     public void GainXP(float amt)
     {
-        Experience += amt;
+        Experience += amt * experienceMultiplier;
         if (Experience > xpRequirement) {
             Experience -= xpRequirement;
             LevelUp(1);
@@ -140,5 +153,17 @@ public class PlayerController : MonoBehaviour
         Level = 0;
         Experience = 0;
         xpRequirement = baseXpRequirement;
+    }
+
+    // addstats
+    public void AddStats(PlayerUpgrade upgrade)
+    {
+        Health += upgrade.health + upgrade.maxHealth;
+        maxHealth += upgrade.maxHealth;
+        healSpeed += upgrade.healSpeed;
+        invincibility += upgrade.invincibility;
+        attackDamage += upgrade.attackDamage;
+        experienceMultiplier += upgrade.experienceMultiplier;
+        cameraSize += upgrade.cameraSize;
     }
 }

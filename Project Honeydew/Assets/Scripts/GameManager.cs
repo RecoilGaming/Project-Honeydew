@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,8 +7,11 @@ public class GameManager : MonoBehaviour
     // serialized variables
     [Header("General")]
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private UpgradeManager upgradeManager;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject upgradePanel;
+    [SerializeField] private List<UpgradeButton> upgradeButtons;
+
     private bool gamePaused = false;
     private bool upgradesOpen = false;
 
@@ -53,7 +57,16 @@ public class GameManager : MonoBehaviour
         } else {
             Time.timeScale = 0f;
             upgradePanel.SetActive(true);
+            for (int i = 0; i < upgradeButtons.Count; i++) upgradeButtons[i].SetUpgrade(upgradeManager.GetUpgrade());
             upgradesOpen = true;
         }
+    }
+
+    public void ApplyUpgrade(int id)
+    {
+        PlayerUpgrade upgrade = upgradeButtons[id].upgrade;
+        playerController.AddStats(upgrade);
+        if (upgrade.upgradeType != UpgradeType.STAT_UPGRADE) upgradeManager.RemoveUpgrade(upgrade);
+        Upgrades();
     }
 }

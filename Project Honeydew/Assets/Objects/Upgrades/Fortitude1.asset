@@ -9,12 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7234ef3e6733d45ff908b79cbe74a362, type: 3}
-  m_Name: ShootProjectile
+  m_Script: {fileID: 11500000, guid: eac006e13ee7b4076a0d591eae94eedf, type: 3}
+  m_Name: Fortitude1
   m_EditorClassIdentifier: 
-  speed: 20
-  accel: 25
-  enemy:
-    serializedVersion: 2
-    m_Bits: 128
-  damage: 12
+  name: Fortified
+  upgradeType: 0
+  description: 'Fortitude: +1'
+  maxHealth: 0
+  health: 0
+  healSpeed: 0
+  invincibility: 0.03
+  attackDamage: 0
+  experienceMultiplier: 0
+  cameraSize: 0

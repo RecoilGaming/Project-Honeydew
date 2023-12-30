@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Follow
   description: Follows the player.
-  maxHealth: 20
+  maxHealth: 30
   moveSpeed: 2
   attackDamage: 7
   experienceYield: 30

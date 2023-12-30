@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Small
   description: It follows you, and is small.
-  maxHealth: 5
+  maxHealth: 10
   moveSpeed: 5
   attackDamage: 3
   experienceYield: 5

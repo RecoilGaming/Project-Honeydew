@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Split
   description: Splits when it dies.
-  maxHealth: 35
+  maxHealth: 60
   moveSpeed: 0.75
   attackDamage: 10
   experienceYield: 35

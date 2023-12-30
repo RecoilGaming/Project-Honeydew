@@ -9,6 +9,7 @@ public class ShootAbility : Ability
     public override void Activate(GameObject player)
     {
         Transform firePoint = player.transform.GetChild(1).GetChild(0);
-        Instantiate(projectile, firePoint.position, firePoint.rotation);
+        GameObject newProjectile = Instantiate(projectile, firePoint.position, firePoint.rotation);
+        newProjectile.GetComponent<ProjectileController>().projectile.damageAddon = player.GetComponent<PlayerController>().attackDamage;
     }
 }

@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    // private variables
-    [SerializeField] private Projectile projectile;
+    public Projectile projectile;
     private Rigidbody2D Body { get; set; }
 	private Vector2 moveDirection;
 
@@ -30,7 +29,7 @@ public class ProjectileController : MonoBehaviour
     {
         EnemyController enemy = collider.gameObject.GetComponent<EnemyController>();
         if (projectile.enemy == (projectile.enemy | (1 << collider.gameObject.layer))) {
-            enemy.Damage(projectile.damage);
+            enemy.Damage(projectile.damage + projectile.damageAddon);
             enemy.Flash(0.15f);
             Destroy(gameObject);
         }
