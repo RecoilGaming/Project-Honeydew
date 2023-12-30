@@ -9,10 +9,13 @@ public class ShootAbility : Ability
 
     public override void Activate(GameObject player)
     {
+        int bullets = player.GetComponent<PlayerController>().bulletCount;
         Transform firePoint = player.transform.GetChild(1).GetChild(0);
-        GameObject newProjectile = Instantiate(projectile, firePoint.position, firePoint.rotation);
-        newProjectile.GetComponent<ProjectileController>().projectile.damageAddon = player.GetComponent<PlayerController>().attackDamage;
-        newProjectile.GetComponent<ProjectileController>().projectile.knockback = player.GetComponent<PlayerController>().attackKnockback;
-        AudioManager.instance.PlaySoundClip(fireClip, player.transform, 1f);
+        for (int i = 0; i < bullets; i++) {
+             GameObject newProjectile = Instantiate(projectile, Quaternion.Euler(0, 0, 15*(i-bullets/2)) * firePoint.position, firePoint.rotation);
+            newProjectile.GetComponent<ProjectileController>().projectile.damageAddon = player.GetComponent<PlayerController>().attackDamage;
+            newProjectile.GetComponent<ProjectileController>().projectile.knockback = player.GetComponent<PlayerController>().attackKnockback;
+            AudioManager.instance.PlaySoundClip(fireClip, player.transform, 1f);
+        }
     }
 }

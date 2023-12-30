@@ -26,4 +26,5 @@ public class PlayerUpgrade : ScriptableObject
     public float attackKnockback;
     public float experienceMultiplier;
     public float cameraSize;
+    public int bulletCount;
 }

@@ -2011,7 +2011,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 492b4acc32d124124b07f723bd424e05, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2969,7 +2969,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3163,6 +3163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 5334352855759395491}
   upgradeManager: {fileID: 845954307}
+  waveSpawner: {fileID: 1059911795}
   mainMenu: {fileID: 1330407170}
   pausePanel: {fileID: 1542429956}
   upgradePanel: {fileID: 1800377540}
@@ -3253,6 +3254,35 @@ MonoBehaviour:
   - upgrade: {fileID: 11400000, guid: c6279eba8ad13486eb15b88b40e65a88, type: 2}
     weight: 2
   - upgrade: {fileID: 11400000, guid: e3f87603ed823496c8d1f9bfe786357f, type: 2}
+    weight: 1
+  - upgrade: {fileID: 11400000, guid: f0ad44ef45bc34d509e897bd10dd3eb0, type: 2}
+    weight: 4
+  - upgrade: {fileID: 11400000, guid: f2069de92a763480a95f471a81c15c5f, type: 2}
+    weight: 2
+  - upgrade: {fileID: 11400000, guid: f8e5da60a1893415bbf318c807b0e9cb, type: 2}
+    weight: 1
+  rareUpgradables:
+  - upgrade: {fileID: 11400000, guid: 6237fc15a5b284244b4a964bdbc421c0, type: 2}
+    weight: 7
+  - upgrade: {fileID: 11400000, guid: 84a62c6b8967f4797a77a9745af1eb3e, type: 2}
+    weight: 7
+  - upgrade: {fileID: 11400000, guid: 929b50ad65d7a4a6c8f11d62633a61e6, type: 2}
+    weight: 7
+  - upgrade: {fileID: 11400000, guid: f2a0dea7463e4410c8905551b1e16c29, type: 2}
+    weight: 7
+  - upgrade: {fileID: 11400000, guid: 2b0eba73087974955803f4ef985b8fb0, type: 2}
+    weight: 1
+  - upgrade: {fileID: 11400000, guid: fee4b13b9fe8a4f6d8dcfc0eb0fcc87e, type: 2}
+    weight: 1
+  - upgrade: {fileID: 11400000, guid: 462beee3869cb444c843b8149c9ef986, type: 2}
+    weight: 1
+  - upgrade: {fileID: 11400000, guid: 6831555ffbb9d4229865d09b9cefa81c, type: 2}
+    weight: 1
+  - upgrade: {fileID: 11400000, guid: 12e7eecb66f984e61b3fa880fd890e54, type: 2}
+    weight: 1
+  - upgrade: {fileID: 11400000, guid: 0e7d9416b8e9b45f7b91730b85e7647c, type: 2}
+    weight: 1
+  - upgrade: {fileID: 11400000, guid: 0840ed93265b0403a9f49fdcba148c94, type: 2}
     weight: 1
 --- !u!4 &845954308
 Transform:
@@ -4032,6 +4062,7 @@ MonoBehaviour:
     value: 3
   - enemy: {fileID: 6605412649910395647, guid: 1d6920724d691446b8b291785d10ee46, type: 3}
     value: 5
+  waveNumber: 1
 --- !u!4 &1059911796
 Transform:
   m_ObjectHideFlags: 0
@@ -5780,7 +5811,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -6034,7 +6065,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 492b4acc32d124124b07f723bd424e05, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6535,7 +6566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1800377541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6730,7 +6761,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 492b4acc32d124124b07f723bd424e05, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8581,8 +8612,10 @@ MonoBehaviour:
   invincibility: 0.4
   attackDamage: 0
   attackSpeed: 0
+  attackKnockback: 10
   experienceMultiplier: 1
   cameraSize: 4.5
+  bulletCount: 1
   baseXpRequirement: 100
   xpRequirementGrowth: 1.3
   primary: {fileID: 2382035287501060449}

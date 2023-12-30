@@ -18,6 +18,6 @@ MonoBehaviour:
   moveSpeed: 0.75
   attackDamage: 10
   experienceYield: 35
-  chaseRange: 100
+  chaseRange: 1000
   attackRange: 1
   splitInto: {fileID: 7430343283044527971, guid: d950cbeca484549b9b8174916135783a, type: 3}

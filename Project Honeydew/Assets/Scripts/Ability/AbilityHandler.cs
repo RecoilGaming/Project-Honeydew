@@ -40,7 +40,7 @@ public class AbilityHandler : MonoBehaviour
                 } else {
                     ability.Deactivate(gameObject);
                     state = AbilityState.COOLDOWN;
-                    cooldownTimer = ability.cooldown - player.attackSpeed * 0.05f;
+                    cooldownTimer = ability.cooldown - player.attackSpeed * 0.02f;
                 }
             break;
             case AbilityState.COOLDOWN:

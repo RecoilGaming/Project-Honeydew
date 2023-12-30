@@ -15,7 +15,7 @@ public class WaveSpawner : MonoBehaviour
 
     // wave variables
     private bool waveIncreasing = false;
-    private int waveNumber = 1;
+    public int waveNumber = 1;
     private int waveValue;
     private int waveEnemies;
     private float waveTimer;

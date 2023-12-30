@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [Header("General")]
     [SerializeField] private PlayerController playerController;
     [SerializeField] private UpgradeManager upgradeManager;
+    [SerializeField] private WaveSpawner waveSpawner;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject upgradePanel;
@@ -77,8 +78,17 @@ public class GameManager : MonoBehaviour
         } else {
             Time.timeScale = 0f;
             upgradePanel.SetActive(true);
-            for (int i = 0; i < upgradeButtons.Count; i++) upgradeButtons[i].SetUpgrade(upgradeManager.GetUpgrade());
-            upgradesOpen = true;
+            if (waveSpawner.waveNumber % 3 == 0) {
+                for (int i = 0; i < upgradeButtons.Count; i++) {
+                    // upgradeButtons[i].SetRare(true);
+                    upgradeButtons[i].SetUpgrade(upgradeManager.GetRareUpgrade());
+                }
+            } else {
+                for (int i = 0; i < upgradeButtons.Count; i++) {
+                    // upgradeButtons[i].SetRare(false);
+                    upgradeButtons[i].SetUpgrade(upgradeManager.GetUpgrade());
+                }
+            } upgradesOpen = true;
         }
     }
 

@@ -18,7 +18,7 @@ MonoBehaviour:
   moveSpeed: 3
   attackDamage: 13
   experienceYield: 40
-  chaseRange: 100
+  chaseRange: 1000
   attackRange: 1
   dashSpeed: 18
   dashDuration: 0.15

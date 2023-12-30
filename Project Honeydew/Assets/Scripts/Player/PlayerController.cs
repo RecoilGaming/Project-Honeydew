@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public float attackKnockback;
     public float experienceMultiplier;
     public float cameraSize;
+    public int bulletCount;
 
     [Header("Leveling")]
     [SerializeField] private float baseXpRequirement;
@@ -180,6 +181,7 @@ public class PlayerController : MonoBehaviour
         attackSpeed += upgrade.attackSpeed;
         experienceMultiplier += upgrade.experienceMultiplier;
         cameraSize += upgrade.cameraSize;
+        bulletCount += upgrade.bulletCount;
     }
     
     // damage flash

@@ -14,11 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fortified
   upgradeType: 0
-  description: 'Fortitude: +3'
+  description: 'Fortitude: +3
+
+
+    Grants more invincibility frames.'
   maxHealth: 0
   health: 0
   healSpeed: 0
   invincibility: 0.15
   attackDamage: 0
+  attackSpeed: 0
+  attackKnockback: 0
   experienceMultiplier: 0
   cameraSize: 0
+  bulletCount: 0

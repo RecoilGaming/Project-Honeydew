@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Efficiency
   upgradeType: 0
-  description: 'Firerate: +1'
+  description: 'Firerate: +1
+
+
+    Increases shooting speed.'
   maxHealth: 0
   health: 0
   healSpeed: 0
   invincibility: 0
   attackDamage: 0
   attackSpeed: 1
+  attackKnockback: 0
   experienceMultiplier: 0
   cameraSize: 0

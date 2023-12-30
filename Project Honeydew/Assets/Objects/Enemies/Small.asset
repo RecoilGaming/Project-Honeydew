@@ -18,5 +18,5 @@ MonoBehaviour:
   moveSpeed: 5
   attackDamage: 3
   experienceYield: 5
-  chaseRange: 100
+  chaseRange: 1000
   attackRange: 1
