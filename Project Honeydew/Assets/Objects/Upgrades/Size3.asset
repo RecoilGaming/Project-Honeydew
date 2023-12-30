@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Size
   upgradeType: 0
-  description: 'Size: +25
+  description: 'Size: +60
 
 
     Increases max health.'
-  maxHealth: 25
+  maxHealth: 60
   health: 0
   healSpeed: 0
   invincibility: 0

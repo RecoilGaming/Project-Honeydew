@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eac006e13ee7b4076a0d591eae94eedf, type: 3}
-  m_Name: Mystery4 4
+  m_Name: Charm
   m_EditorClassIdentifier: 
-  name: ???
+  name: CHARM
   upgradeType: 0
-  description: Does something different every time.
+  description: In this game jam, we are inviting both beginners who have little to
+    no major game development experience, especially high schoolers, and more advanced
+    developers through 3 different categories.
   maxHealth: 0
   health: 0
   healSpeed: 0
   invincibility: 0
   attackDamage: 0
   attackSpeed: 0
-  attackKnockback: -10
-  experienceMultiplier: 10
+  attackKnockback: 0
+  experienceMultiplier: 69
   cameraSize: 0
   bulletCount: 0
+  bulletPierce: 0

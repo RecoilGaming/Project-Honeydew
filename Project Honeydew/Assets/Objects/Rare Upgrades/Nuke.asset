@@ -10,18 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eac006e13ee7b4076a0d591eae94eedf, type: 3}
-  m_Name: Mystery4 2
+  m_Name: Nuke
   m_EditorClassIdentifier: 
-  name: ???
+  name: Nuke
   upgradeType: 0
-  description: Does something different every time.
-  maxHealth: -50
-  health: -50
-  healSpeed: 50
+  description: 'Size: +100
+
+    Potency: +15
+
+    Firerate: -10
+
+    Spray: +1'
+  maxHealth: 100
+  health: 0
+  healSpeed: 0
   invincibility: 0
-  attackDamage: 0
-  attackSpeed: 0
+  attackDamage: 15
+  attackSpeed: -10
   attackKnockback: 0
   experienceMultiplier: 0
   cameraSize: 0
-  bulletCount: 0
+  bulletCount: 1
+  bulletPierce: 0

@@ -15,6 +15,7 @@ public class ShootAbility : Ability
              GameObject newProjectile = Instantiate(projectile, Quaternion.Euler(0, 0, 15*(i-bullets/2)) * firePoint.position, firePoint.rotation);
             newProjectile.GetComponent<ProjectileController>().projectile.damageAddon = player.GetComponent<PlayerController>().attackDamage;
             newProjectile.GetComponent<ProjectileController>().projectile.knockback = player.GetComponent<PlayerController>().attackKnockback;
+            newProjectile.GetComponent<ProjectileController>().projectile.pierce = player.GetComponent<PlayerController>().bulletPierce;
             AudioManager.instance.PlaySoundClip(fireClip, player.transform, 1f);
         }
     }

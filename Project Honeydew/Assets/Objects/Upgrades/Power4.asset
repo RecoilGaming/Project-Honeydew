@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Power
   upgradeType: 0
-  description: 'Potency: +4
+  description: 'Potency: +7
 
 
     Increases player damage.'
@@ -22,7 +22,7 @@ MonoBehaviour:
   health: 0
   healSpeed: 0
   invincibility: 0
-  attackDamage: 4
+  attackDamage: 7
   attackSpeed: 0
   attackKnockback: 0
   experienceMultiplier: 0

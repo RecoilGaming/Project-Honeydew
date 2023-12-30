@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public float experienceMultiplier;
     public float cameraSize;
     public int bulletCount;
+    public int bulletPierce;
 
     [Header("Leveling")]
     [SerializeField] private float baseXpRequirement;
@@ -179,9 +180,11 @@ public class PlayerController : MonoBehaviour
         invincibility += upgrade.invincibility;
         attackDamage += upgrade.attackDamage;
         attackSpeed += upgrade.attackSpeed;
+        attackKnockback += upgrade.attackKnockback;
         experienceMultiplier += upgrade.experienceMultiplier;
         cameraSize += upgrade.cameraSize;
         bulletCount += upgrade.bulletCount;
+        bulletPierce += upgrade.bulletPierce;
     }
     
     // damage flash

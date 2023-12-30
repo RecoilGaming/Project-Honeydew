@@ -10,21 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eac006e13ee7b4076a0d591eae94eedf, type: 3}
-  m_Name: Power5
+  m_Name: Cheese
   m_EditorClassIdentifier: 
-  name: Power
+  name: Cheese
   upgradeType: 0
-  description: 'Potency: +9
-
-
-    Increases player damage.'
-  maxHealth: 0
-  health: 0
+  description: Cheese
+  maxHealth: 200
+  health: 1000000
   healSpeed: 0
   invincibility: 0
-  attackDamage: 9
+  attackDamage: 0
   attackSpeed: 0
   attackKnockback: 0
-  experienceMultiplier: 0
+  experienceMultiplier: 1
   cameraSize: 0
-  bulletCount: 0
+  bulletCount: 1
+  bulletPierce: 1

@@ -24,7 +24,8 @@ MonoBehaviour:
   invincibility: 0
   attackDamage: 0
   attackSpeed: 0
-  attackKnockback: 7
+  attackKnockback: 60
   experienceMultiplier: 0
   cameraSize: 0
   bulletCount: 0
+  bulletPierce: 0

@@ -21,7 +21,8 @@ MonoBehaviour:
   invincibility: 0.15
   attackDamage: 10
   attackSpeed: 2
-  attackKnockback: 6
+  attackKnockback: 10
   experienceMultiplier: 0.1
   cameraSize: 0
   bulletCount: 1
+  bulletPierce: 1

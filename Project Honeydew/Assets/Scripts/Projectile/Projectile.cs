@@ -14,4 +14,5 @@ public class Projectile : ScriptableObject
     public float damage;
     public float damageAddon;
     public float knockback;
+    public float pierce;
 }

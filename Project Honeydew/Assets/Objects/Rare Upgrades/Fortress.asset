@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eac006e13ee7b4076a0d591eae94eedf, type: 3}
-  m_Name: Mystery4 1
+  m_Name: Fortress
   m_EditorClassIdentifier: 
-  name: ???
+  name: Fortress
   upgradeType: 0
-  description: Does something different every time.
+  description: 'Fortitude: +10
+
+    Charm: -3'
   maxHealth: 0
   health: 0
   healSpeed: 0
-  invincibility: 0
+  invincibility: 0.5
   attackDamage: 0
   attackSpeed: 0
   attackKnockback: 0
-  experienceMultiplier: 0
+  experienceMultiplier: -0.3
   cameraSize: 0
   bulletCount: 0

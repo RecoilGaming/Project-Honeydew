@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac006e13ee7b4076a0d591eae94eedf, type: 3}
   m_Name: Superforce
   m_EditorClassIdentifier: 
-  name: Superforce
+  name: SUPERFORCE
   upgradeType: 0
-  description: 'Potency: -1
+  description: 'Potency: -5
 
-    Force: +15'
+    Force: +10'
   maxHealth: 0
   health: 0
   healSpeed: 0
   invincibility: 0
-  attackDamage: -1
+  attackDamage: -5
   attackSpeed: 0
-  attackKnockback: 37
+  attackKnockback: 300
   experienceMultiplier: 0
   cameraSize: 0
   bulletCount: 0

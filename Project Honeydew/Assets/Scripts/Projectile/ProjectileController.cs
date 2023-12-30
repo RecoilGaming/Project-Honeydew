@@ -5,12 +5,14 @@ public class ProjectileController : MonoBehaviour
     public Projectile projectile;
     private Rigidbody2D Body { get; set; }
 	private Vector2 moveDirection;
+    private float pierce;
 
     // runs before scene loadeds
     private void Awake()
 	{
 		// grab components
 		Body = GetComponent<Rigidbody2D>();
+        pierce = projectile.pierce;
     }
 
     // runs at 60 fps
@@ -29,9 +31,14 @@ public class ProjectileController : MonoBehaviour
     {
         EnemyController enemy = collider.gameObject.GetComponent<EnemyController>();
         if (projectile.enemy == (projectile.enemy | (1 << collider.gameObject.layer))) {
-            enemy.Damage(projectile.damage + projectile.damageAddon);
-            StartCoroutine(AudioManager.instance.ApplyKnockback(enemy.GetComponent<Rigidbody2D>(), projectile.knockback));
-            Destroy(gameObject);
+
+            if (pierce == 0) Destroy(gameObject);
+            else {
+                Physics2D.IgnoreCollision(collider, transform.GetComponent<CircleCollider2D>());
+                enemy.Damage(projectile.damage + projectile.damageAddon);
+                StartCoroutine(AudioManager.instance.ApplyKnockback(enemy.GetComponent<Rigidbody2D>(), projectile.knockback));
+                pierce--;
+            }
         }
     }
 }

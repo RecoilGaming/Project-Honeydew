@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eac006e13ee7b4076a0d591eae94eedf, type: 3}
-  m_Name: Power5
+  m_Name: Die
   m_EditorClassIdentifier: 
-  name: Power
+  name: Die
   upgradeType: 0
-  description: 'Potency: +9
+  description: 'Mending: -10
 
-
-    Increases player damage.'
+    Fortitude: +100'
   maxHealth: 0
   health: 0
-  healSpeed: 0
-  invincibility: 0
-  attackDamage: 9
+  healSpeed: -10
+  invincibility: 5
+  attackDamage: 0
   attackSpeed: 0
   attackKnockback: 0
   experienceMultiplier: 0
   cameraSize: 0
   bulletCount: 0
+  bulletPierce: 0

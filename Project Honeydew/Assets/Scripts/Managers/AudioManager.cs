@@ -39,7 +39,6 @@ public class AudioManager : MonoBehaviour
     {
         target.AddForce(target.transform.position.normalized * amt, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.15f);
-        Debug.Log("CANCEL");
-        target.velocity = Vector2.zero;
+        if (target != null) target.velocity = Vector2.zero;
     }
 }
