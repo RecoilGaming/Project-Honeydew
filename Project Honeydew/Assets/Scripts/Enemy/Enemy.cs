@@ -16,6 +16,9 @@ public class Enemy : ScriptableObject
     public float chaseRange;
     public float attackRange;
 
+    [Header("Difficulty")]
+    public float difficulty;
+
     public virtual void Idle(GameObject player, GameObject enemy) {}
     public virtual void Chase(GameObject player, GameObject enemy) {}
     public virtual void Attack(GameObject player, GameObject enemy) {}

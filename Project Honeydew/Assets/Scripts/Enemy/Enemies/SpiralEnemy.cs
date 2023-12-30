@@ -11,7 +11,7 @@ public class SpiralEnemy : Enemy
 
     public override void Attack(GameObject player, GameObject enemy)
     {
-        player.GetComponent<PlayerController>().Damage(attackDamage);
+        player.GetComponent<PlayerController>().Damage(attackDamage*difficulty);
     }
 
     public override void Die(GameObject player, GameObject enemy)

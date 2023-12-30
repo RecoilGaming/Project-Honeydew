@@ -16,8 +16,8 @@ MonoBehaviour:
   upgradeType: 0
   description: 'Firerate: +10
 
-    Size: -100'
-  maxHealth: -100
+    Size: -150'
+  maxHealth: -150
   health: 0
   healSpeed: 0
   invincibility: 0
@@ -27,3 +27,4 @@ MonoBehaviour:
   experienceMultiplier: 0
   cameraSize: 0
   bulletCount: 0
+  bulletPierce: 0

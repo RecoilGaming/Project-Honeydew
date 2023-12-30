@@ -8,12 +8,15 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private PlayerController player;
     [SerializeField] private float baseWaveValue;
     [SerializeField] private float waveValueGrowth;
+    [SerializeField] private float baseDifficulty;
+    [SerializeField] private float difficultyScaling;
     [SerializeField] private float waveDuration;
     [SerializeField] private float waveWaitTime;
     [SerializeField] private WaveDisplay waveDisplay;
     [SerializeField] private List<Spawnable> enemies = new();
 
     // wave variables
+    private float worldDifficulty;
     private bool waveIncreasing = false;
     public int waveNumber = 1;
     private int waveValue;
@@ -28,6 +31,7 @@ public class WaveSpawner : MonoBehaviour
     // runs when script loads
     private void Start()
     {
+        worldDifficulty = baseDifficulty;
         GenerateWave();
     }
 
@@ -38,7 +42,8 @@ public class WaveSpawner : MonoBehaviour
             if (newEnemies.Count > 0) {
                 float randomAngle = Random.Range(0,2*Mathf.PI);
                 Vector3 position = new(2*player.cameraSize*Mathf.Cos(randomAngle),2*player.cameraSize*Mathf.Sin(randomAngle),0);
-                Instantiate(newEnemies[0], position, Quaternion.identity);
+                GameObject newEnemy = Instantiate(newEnemies[0], position, Quaternion.identity);
+                newEnemy.GetComponent<EnemyController>().SetDifficulty(worldDifficulty);
                 newEnemies.RemoveAt(0);
                 spawnTimer = spawnInterval;
             } else {
@@ -80,6 +85,7 @@ public class WaveSpawner : MonoBehaviour
         
         waveIncreasing = false;
         waveNumber += 1;
+        worldDifficulty *= difficultyScaling;
         waveDisplay.SetWave(waveNumber);
         GenerateWave();
     }

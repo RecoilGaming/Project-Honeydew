@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Healthbar healthbar;
     [SerializeField] private Experiencebar experiencebar;
     [SerializeField] private LevelDisplay levelDisplay;
+    [SerializeField] private HealthDisplay healthDisplay;
     [SerializeField] private Material flashMaterial;
     
     [Header("Stats")]
@@ -107,15 +107,15 @@ public class PlayerController : MonoBehaviour
 
         // handle abilities
         primary.Handle(fireAction.IsPressed(), this);
-        ability1.Handle(abil1Action.IsPressed(), this);
-        ability2.Handle(abil2Action.IsPressed(), this);
-        ability3.Handle(abil3Action.IsPressed(), this);
+        // ability1.Handle(abil1Action.IsPressed(), this);
+        // ability2.Handle(abil2Action.IsPressed(), this);
+        // ability3.Handle(abil3Action.IsPressed(), this);
 
         // pausing
         pauseAction.started += _ => { gameManager.Pause(); };
 
         // healing
-        if (healSpeed > 0) Heal(healSpeed);
+        if (healSpeed != 0) Heal(healSpeed);
 
         // change camera size
         if (mainCamera.orthographicSize != cameraSize) mainCamera.orthographicSize = cameraSize;
@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
 
         Health = Mathf.Max(Health-amt, 0);
         healthbar.SetHealthPercent(Health / maxHealth);
+        healthDisplay.SetHealth((int)Health, (int)maxHealth);
         Flash(0.15f);
         AudioManager.instance.PlaySoundClip(damageClip, transform, 0.8f);
         invincibilityTimer = invincibility;
@@ -143,6 +144,7 @@ public class PlayerController : MonoBehaviour
 
         Health = Mathf.Min(Health+amt, maxHealth);
         healthbar.SetHealthPercent(Health / maxHealth);
+        healthDisplay.SetHealth((int)Health, (int)maxHealth);
         healingTimer = 1;
     }
 
@@ -174,8 +176,11 @@ public class PlayerController : MonoBehaviour
     // addstats
     public void AddStats(PlayerUpgrade upgrade)
     {
-        Health += upgrade.health + upgrade.maxHealth;
         maxHealth += upgrade.maxHealth;
+        if (upgrade.maxHealth > 0) Health += upgrade.maxHealth;
+        Health = Mathf.Min(Health+upgrade.health, maxHealth);
+        healthDisplay.SetHealth((int)Health, (int)maxHealth);
+
         healSpeed += upgrade.healSpeed;
         invincibility += upgrade.invincibility;
         attackDamage += upgrade.attackDamage;

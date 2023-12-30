@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Unkillable
   upgradeType: 0
-  description: 'Size: -100
+  description: 'Size: -200
 
     Mending: +10'
-  maxHealth: -100
+  maxHealth: -200
   health: 10
   healSpeed: 0
   invincibility: 0
@@ -27,3 +27,4 @@ MonoBehaviour:
   experienceMultiplier: 0
   cameraSize: 0
   bulletCount: 0
+  bulletPierce: 0

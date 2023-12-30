@@ -31,14 +31,12 @@ public class ProjectileController : MonoBehaviour
     {
         EnemyController enemy = collider.gameObject.GetComponent<EnemyController>();
         if (projectile.enemy == (projectile.enemy | (1 << collider.gameObject.layer))) {
+            pierce--;
 
-            if (pierce == 0) Destroy(gameObject);
-            else {
-                Physics2D.IgnoreCollision(collider, transform.GetComponent<CircleCollider2D>());
-                enemy.Damage(projectile.damage + projectile.damageAddon);
-                StartCoroutine(AudioManager.instance.ApplyKnockback(enemy.GetComponent<Rigidbody2D>(), projectile.knockback));
-                pierce--;
-            }
+            Physics2D.IgnoreCollision(collider, transform.GetComponent<CircleCollider2D>());
+            enemy.Damage(projectile.damage + projectile.damageAddon);
+            StartCoroutine(AudioManager.instance.ApplyKnockback(enemy.GetComponent<Rigidbody2D>(), projectile.knockback));
+            if (pierce < 0) Destroy(gameObject);
         }
     }
 }

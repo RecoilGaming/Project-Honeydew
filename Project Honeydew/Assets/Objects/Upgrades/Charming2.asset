@@ -25,6 +25,7 @@ MonoBehaviour:
   attackDamage: 0
   attackSpeed: 0
   attackKnockback: 0
-  experienceMultiplier: 0.2
+  experienceMultiplier: 0.8
   cameraSize: 0
   bulletCount: 0
+  bulletPierce: 0

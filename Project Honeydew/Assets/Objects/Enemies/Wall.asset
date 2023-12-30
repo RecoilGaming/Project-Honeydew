@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wall
   description: A very big enemy indeed.
-  maxHealth: 160
+  maxHealth: 150
   moveSpeed: 0.25
-  attackDamage: 1
-  experienceYield: 25
+  attackDamage: 10
+  experienceYield: 165
   chaseRange: 1000
   attackRange: 2.5

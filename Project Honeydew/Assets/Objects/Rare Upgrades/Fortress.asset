@@ -27,3 +27,4 @@ MonoBehaviour:
   experienceMultiplier: -0.3
   cameraSize: 0
   bulletCount: 0
+  bulletPierce: 0

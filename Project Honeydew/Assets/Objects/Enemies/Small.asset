@@ -17,6 +17,6 @@ MonoBehaviour:
   maxHealth: 10
   moveSpeed: 5
   attackDamage: 3
-  experienceYield: 5
+  experienceYield: 10
   chaseRange: 1000
   attackRange: 1

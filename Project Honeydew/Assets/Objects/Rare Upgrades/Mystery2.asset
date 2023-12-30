@@ -15,7 +15,7 @@ MonoBehaviour:
   name: ???
   upgradeType: 0
   description: Does something different every time.
-  maxHealth: -50
+  maxHealth: -100
   health: 0
   healSpeed: -1
   invincibility: -0.15

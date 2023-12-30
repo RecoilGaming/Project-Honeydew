@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Nuke
   upgradeType: 0
-  description: 'Size: +100
+  description: 'Size: +150
 
     Potency: +15
 
     Firerate: -10
 
     Spray: +1'
-  maxHealth: 100
+  maxHealth: 150
   health: 0
   healSpeed: 0
   invincibility: 0

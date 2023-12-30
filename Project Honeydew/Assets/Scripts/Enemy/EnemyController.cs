@@ -62,4 +62,10 @@ public class EnemyController : MonoBehaviour
         flashing = false;
     }
 
+    public void SetDifficulty(float difficulty)
+    {
+        Health *= difficulty;
+        enemyHandler.GetEnemy().difficulty = difficulty;
+    }
+
 }

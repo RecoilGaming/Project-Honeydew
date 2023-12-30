@@ -8,13 +8,11 @@ public class GameManager : MonoBehaviour
     [Header("General")]
     [SerializeField] private PlayerController playerController;
     [SerializeField] private UpgradeManager upgradeManager;
-    [SerializeField] private WaveSpawner waveSpawner;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject upgradePanel;
     [SerializeField] private List<UpgradeButton> upgradeButtons;
 
-    private bool inMainMenu = false;
     private bool gamePaused = false;
     private bool upgradesOpen = false;
 
@@ -41,7 +39,6 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0f;
         mainMenu.SetActive(true);
-        inMainMenu = true;
     }
 
 
@@ -49,7 +46,6 @@ public class GameManager : MonoBehaviour
     {
         mainMenu.SetActive(false);
         Time.timeScale = 1f;
-        inMainMenu = false;
     }
 
     public void Pause()
@@ -78,7 +74,7 @@ public class GameManager : MonoBehaviour
         } else {
             Time.timeScale = 0f;
             upgradePanel.SetActive(true);
-            if (waveSpawner.waveNumber % 3 == 0) {
+            if (playerController.Level % 3 == 0) {
                 for (int i = 0; i < upgradeButtons.Count; i++) {
                     // upgradeButtons[i].SetRare(true);
                     upgradeButtons[i].SetUpgrade(upgradeManager.GetRareUpgrade());
