@@ -19,9 +19,9 @@ public class SplitEnemy : Enemy
 
     public override void Die(GameObject player, GameObject enemy)
     {
-        Instantiate(splitInto, enemy.transform.position, enemy.transform.rotation);
-        Instantiate(splitInto, enemy.transform.position, enemy.transform.rotation);
-        Instantiate(splitInto, enemy.transform.position, enemy.transform.rotation);
+        Instantiate(splitInto, enemy.transform.position + new Vector3(0f,0.5f,0f), enemy.transform.rotation);
+        Instantiate(splitInto, enemy.transform.position + new Vector3(0.3f,-0.2f,0f), enemy.transform.rotation);
+        Instantiate(splitInto, enemy.transform.position + new Vector3(-0.3f,-0.2f,0f), enemy.transform.rotation);
         Destroy(enemy);
     }
 }
