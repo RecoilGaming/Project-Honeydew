@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     // serialized variables
     [Header("General")]
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject playerCore;
     [SerializeField] private Healthbar healthbar;
     [SerializeField] private Experiencebar experiencebar;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private InputAction abil1Action;
     private InputAction abil2Action;
     private InputAction abil3Action;
+    private InputAction pauseAction;
 
     // other variables
     private Vector2 lookDirection;
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
         abil1Action = playerInput.actions["Ability1"];
         abil2Action = playerInput.actions["Ability2"];
         abil3Action = playerInput.actions["Ability3"];
+        pauseAction = playerInput.actions["Pause"];
     }
 
     // runs when script loads
@@ -88,12 +91,11 @@ public class PlayerController : MonoBehaviour
         ability1.Handle(abil1Action.IsPressed());
         ability2.Handle(abil2Action.IsPressed());
         ability3.Handle(abil3Action.IsPressed());
-        // if (fireAction.WasPressedThisFrame()) {
-        //     Damage(25);
-        //     Debug.Log(Health);
-        // }
 
-        healthbar.SetHealthPercent(Health / maxHealth);
+        // pausing
+        pauseAction.started += _ => {
+            gameManager.Pause();
+        };
 
         // decrease timers
         invincibilityTimer -= Time.deltaTime;
@@ -130,6 +132,7 @@ public class PlayerController : MonoBehaviour
         Level += amt;
         xpRequirement *= xpRequirementGrowth;
         levelDisplay.SetLevel(Level);
+        gameManager.Upgrades();
     }
 
     public void ResetLevels()

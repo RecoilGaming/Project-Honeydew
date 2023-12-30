@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHandler: {fileID: 8000728797742983660}
+  flashMaterial: {fileID: 2100000, guid: 35be77cdd36dc4af682a2e6e6ca2d15f, type: 2}
 --- !u!114 &8000728797742983660
 MonoBehaviour:
   m_ObjectHideFlags: 0

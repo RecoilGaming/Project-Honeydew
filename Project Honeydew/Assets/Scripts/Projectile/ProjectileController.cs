@@ -31,6 +31,7 @@ public class ProjectileController : MonoBehaviour
         EnemyController enemy = collider.gameObject.GetComponent<EnemyController>();
         if (projectile.enemy == (projectile.enemy | (1 << collider.gameObject.layer))) {
             enemy.Damage(projectile.damage);
+            enemy.Flash(0.15f);
             Destroy(gameObject);
         }
     }
