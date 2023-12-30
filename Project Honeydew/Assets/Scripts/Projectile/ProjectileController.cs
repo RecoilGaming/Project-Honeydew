@@ -14,6 +14,10 @@ public class ProjectileController : MonoBehaviour
 		Body = GetComponent<Rigidbody2D>();
     }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     // runs at 60 fps
 	private void FixedUpdate()
 	{
