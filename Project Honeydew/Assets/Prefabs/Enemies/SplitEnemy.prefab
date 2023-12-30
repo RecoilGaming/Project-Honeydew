@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3625188959087934762}
   - component: {fileID: 9026517023606787649}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4890038218422815188}
   - component: {fileID: 8164159971688731630}
   - component: {fileID: 4413137478766448893}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SplitEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 2945302079638732957}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4090285, y: -0.8123896, z: 1.1570551}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2945302079638732957}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b844d2c751d9845459d4f0e411d597b4, type: 3}
   m_Name: 
