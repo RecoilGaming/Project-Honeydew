@@ -196,6 +196,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHandler: {fileID: 4413137478766448893}
   flashMaterial: {fileID: 2100000, guid: 35be77cdd36dc4af682a2e6e6ca2d15f, type: 2}
+  damageSounds:
+  - {fileID: 8300000, guid: 485c45e4a0895421eacf6c4df74e2cd2, type: 3}
+  - {fileID: 8300000, guid: 0d88b9d1342764e0186545f476656850, type: 3}
+  - {fileID: 8300000, guid: b0656af1bdd4041cab7cb74c34a69092, type: 3}
 --- !u!114 &4413137478766448893
 MonoBehaviour:
   m_ObjectHideFlags: 0

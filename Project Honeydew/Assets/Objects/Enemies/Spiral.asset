@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c623b45cd03478dad76685b8ec8457, type: 3}
-  m_Name: Split
+  m_Script: {fileID: 11500000, guid: ee9c74ef312fc47a3a5994d6b9713610, type: 3}
+  m_Name: Spiral
   m_EditorClassIdentifier: 
-  name: Split
-  description: Splits when it dies.
-  maxHealth: 75
-  moveSpeed: 0.75
-  attackDamage: 10
-  experienceYield: 35
+  name: Spiral
+  description: Spirals around the player.
+  maxHealth: 50
+  moveSpeed: 4.5
+  attackDamage: 12
+  experienceYield: 45
   chaseRange: 100
   attackRange: 1
-  splitInto: {fileID: 7430343283044527971, guid: d950cbeca484549b9b8174916135783a, type: 3}

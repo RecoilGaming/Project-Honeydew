@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,12 +19,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Healthbar healthbar;
     [SerializeField] private Experiencebar experiencebar;
     [SerializeField] private LevelDisplay levelDisplay;
+    [SerializeField] private Material flashMaterial;
     
     [Header("Stats")]
     public float maxHealth;
     public float healSpeed;
     public float invincibility;
     public float attackDamage;
+    public float attackSpeed;
+    public float attackKnockback;
     public float experienceMultiplier;
     public float cameraSize;
 
@@ -37,9 +41,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AbilityHandler ability2;
     [SerializeField] private AbilityHandler ability3;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip damageClip;
+
     // component variables
     private Rigidbody2D playerBody;
     private PlayerInput playerInput;
+    private SpriteRenderer sprite;
+    private Material spriteMaterial;
 
     // input variables
     private InputAction lookAction;
@@ -54,6 +63,7 @@ public class PlayerController : MonoBehaviour
     private float invincibilityTimer = 0;
     private float healingTimer = 0;
     private float xpRequirement;
+    private bool flashing = false;
 
     private void OnEnable() { Player = gameObject; }
     private void OnDisable() { Player = null; }
@@ -64,6 +74,8 @@ public class PlayerController : MonoBehaviour
         // grab components
 		playerBody = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        spriteMaterial = sprite.material;
 
         // input actions
         lookAction = playerInput.actions["Look"];
@@ -92,10 +104,10 @@ public class PlayerController : MonoBehaviour
         playerCore.transform.up = lookDirection;
 
         // handle abilities
-        primary.Handle(fireAction.IsPressed());
-        ability1.Handle(abil1Action.IsPressed());
-        ability2.Handle(abil2Action.IsPressed());
-        ability3.Handle(abil3Action.IsPressed());
+        primary.Handle(fireAction.IsPressed(), this);
+        ability1.Handle(abil1Action.IsPressed(), this);
+        ability2.Handle(abil2Action.IsPressed(), this);
+        ability3.Handle(abil3Action.IsPressed(), this);
 
         // pausing
         pauseAction.started += _ => { gameManager.Pause(); };
@@ -118,6 +130,8 @@ public class PlayerController : MonoBehaviour
 
         Health = Mathf.Max(Health-amt, 0);
         healthbar.SetHealthPercent(Health / maxHealth);
+        Flash(0.15f);
+        AudioManager.instance.PlaySoundClip(damageClip, transform, 0.8f);
         invincibilityTimer = invincibility;
     }
 
@@ -163,7 +177,25 @@ public class PlayerController : MonoBehaviour
         healSpeed += upgrade.healSpeed;
         invincibility += upgrade.invincibility;
         attackDamage += upgrade.attackDamage;
+        attackSpeed += upgrade.attackSpeed;
         experienceMultiplier += upgrade.experienceMultiplier;
         cameraSize += upgrade.cameraSize;
+    }
+    
+    // damage flash
+    public void Flash(float duration)
+    {
+        if (flashing) {
+            StopCoroutine(nameof(FlashSprite));
+        } StartCoroutine(nameof(FlashSprite), duration);
+    }
+
+    private IEnumerator FlashSprite(float dur)
+    {
+        flashing = true;
+        sprite.material = flashMaterial;
+        yield return new WaitForSeconds(dur);
+        sprite.material = spriteMaterial;
+        flashing = false;
     }
 }

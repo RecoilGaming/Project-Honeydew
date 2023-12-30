@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     // private variables
     [SerializeField] private EnemyHandler enemyHandler;
     [SerializeField] private Material flashMaterial;
+    [SerializeField] private AudioClip[] damageSounds;
     private SpriteRenderer sprite;
     private Material spriteMaterial;
     private bool flashing = false;
@@ -36,6 +37,8 @@ public class EnemyController : MonoBehaviour
     public void Damage(float amt)
     {
         Health -= amt;
+        Flash(0.15f);
+        AudioManager.instance.PlayRandomSoundClip(damageSounds, transform, 0.8f);
     }
 
     public void Heal(float amt)

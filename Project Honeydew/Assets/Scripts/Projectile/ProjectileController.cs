@@ -30,7 +30,7 @@ public class ProjectileController : MonoBehaviour
         EnemyController enemy = collider.gameObject.GetComponent<EnemyController>();
         if (projectile.enemy == (projectile.enemy | (1 << collider.gameObject.layer))) {
             enemy.Damage(projectile.damage + projectile.damageAddon);
-            enemy.Flash(0.15f);
+            StartCoroutine(AudioManager.instance.ApplyKnockback(enemy.GetComponent<Rigidbody2D>(), projectile.knockback));
             Destroy(gameObject);
         }
     }

@@ -22,6 +22,8 @@ public class PlayerUpgrade : ScriptableObject
     public float healSpeed;
     public float invincibility;
     public float attackDamage;
+    public float attackSpeed;
+    public float attackKnockback;
     public float experienceMultiplier;
     public float cameraSize;
 }

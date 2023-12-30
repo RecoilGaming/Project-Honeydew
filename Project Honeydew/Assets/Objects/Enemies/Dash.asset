@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Dash
   description: Occasionally dashes.
-  maxHealth: 20
+  maxHealth: 22
   moveSpeed: 3
   attackDamage: 13
   experienceYield: 40
   chaseRange: 100
   attackRange: 1
-  dashSpeed: 16
+  dashSpeed: 18
   dashDuration: 0.15
   dashCooldown: 1

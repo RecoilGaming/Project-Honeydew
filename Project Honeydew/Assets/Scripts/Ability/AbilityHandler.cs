@@ -23,7 +23,7 @@ public class AbilityHandler : MonoBehaviour
     }
 
     // handle ability
-    public void Handle(bool inp)
+    public void Handle(bool inp, PlayerController player)
     {
         switch (state)
         {
@@ -40,7 +40,7 @@ public class AbilityHandler : MonoBehaviour
                 } else {
                     ability.Deactivate(gameObject);
                     state = AbilityState.COOLDOWN;
-                    cooldownTimer = ability.cooldown;
+                    cooldownTimer = ability.cooldown - player.attackSpeed * 0.05f;
                 }
             break;
             case AbilityState.COOLDOWN:

@@ -13,4 +13,5 @@ public class Projectile : ScriptableObject
     [Header("Damage")]
     public float damage;
     public float damageAddon;
+    public float knockback;
 }

@@ -5,12 +5,13 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     // serialized variables
+    [SerializeField] private PlayerController player;
     [SerializeField] private float baseWaveValue;
     [SerializeField] private float waveValueGrowth;
     [SerializeField] private float waveDuration;
     [SerializeField] private float waveWaitTime;
     [SerializeField] private WaveDisplay waveDisplay;
-    [SerializeField] private List<Spawnable> enemies = new List<Spawnable>();
+    [SerializeField] private List<Spawnable> enemies = new();
 
     // wave variables
     private bool waveIncreasing = false;
@@ -22,7 +23,7 @@ public class WaveSpawner : MonoBehaviour
     // spawning variables
     private float spawnTimer;
     private float spawnInterval;
-    private List<GameObject> newEnemies = new List<GameObject>();
+    private List<GameObject> newEnemies = new();
 
     // runs when script loads
     private void Start()
@@ -36,7 +37,7 @@ public class WaveSpawner : MonoBehaviour
         if (spawnTimer <= 0) {
             if (newEnemies.Count > 0) {
                 float randomAngle = Random.Range(0,2*Mathf.PI);
-                Vector3 position = new(10*Mathf.Cos(randomAngle),10*Mathf.Sin(randomAngle),0);
+                Vector3 position = new(2*player.cameraSize*Mathf.Cos(randomAngle),2*player.cameraSize*Mathf.Sin(randomAngle),0);
                 Instantiate(newEnemies[0], position, Quaternion.identity);
                 newEnemies.RemoveAt(0);
                 spawnTimer = spawnInterval;
@@ -56,7 +57,7 @@ public class WaveSpawner : MonoBehaviour
     private void GenerateWave()
     {
         waveValue = (int) (baseWaveValue * Mathf.Pow(waveValueGrowth, 2*(waveNumber-1)));
-        waveEnemies = Mathf.Min(enemies.Count, (int) Mathf.Log(waveNumber, 1.75f));
+        waveEnemies = Mathf.Min(enemies.Count, 1 + (waveNumber / 3));
 
         newEnemies.Clear();
         while (waveValue > 0)
